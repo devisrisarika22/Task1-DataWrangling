@@ -1,8 +1,8 @@
-🧹 Task 1: Data Immersion & Wrangling - Sales Dataset
-📌 Objective
+# 🧹 Task 1: Data Immersion & Wrangling - Sales Dataset
+## 📌 Objective
 The objective of this project is to understand, clean, and prepare a real-world sales dataset for analysis. Data wrangling is an essential first step in any data analytics workflow.
-
-📊 Dataset
+---
+## 📊 Dataset
 This project uses a Sales Transactions Dataset, which contains business-related data such as:
 
 Customer information (Name, Gender, Date of Birth, Age)
@@ -11,28 +11,29 @@ Sales and revenue data (Unit Price, Quantity, Discount, Net Revenue)
 Geographic data (Region)
 Transaction details (Date, Payment Method, Customer Rating)
 
+---
 
-🔍 Steps Performed
-1. Data Understanding
+## 🔍 Steps Performed
+### 1. Data Understanding
 
 Loaded dataset using Python
 Explored structure and column details
 Analyzed dataset using .head(), .info(), .describe()
 
-2. Data Quality Assessment
+### 2. Data Quality Assessment
 
 Checked for missing values (Gender 6%, Region 6%, Quantity 3.7%, Unit Price 4.5%)
 Identified and counted duplicate records (8 duplicates found)
 Detected inconsistent formatting in text and date columns
 
-3. Data Cleaning
+### 3. Data Cleaning
 
 Removed 8 duplicate rows
 Standardized inconsistent text values (M/F → Male/Female, mixed casing in Category, Region)
 Filled missing values with median or default values
 Parsed multiple date formats into a single standard format
 
-4. Feature Engineering
+### 4. Feature Engineering
 
 Created new columns:
 
@@ -44,17 +45,18 @@ Net_Revenue = Gross Revenue − Discount Amount
 Transaction_Year, Month, Quarter, DayOfWeek = Extracted from Transaction Date
 Is_High_Value = True if Net Revenue > 75th percentile
 
+---
 
 
-
-🛠️ Tools & Technologies
+## 🛠️ Tools & Technologies
 
 Python
 Pandas
 NumPy
 
+---
 
-📁 Project Structure
+## 📁 Project Structure
 Task1-DataWrangling/
 │
 ├── data/
@@ -72,17 +74,19 @@ Task1-DataWrangling/
 ├── task1.py
 └── README.md
 
-📈 Output
+---
+
+## 📈 Output
 
 Cleaned dataset with 507 rows × 24 columns ready for analysis
 Summary statistics of key numerical columns
 Organized project structure for reproducibility
+---
 
-
-🚀 Conclusion
+## 🚀 Conclusion
 This project demonstrates the importance of data preprocessing and cleaning before performing any analysis. It ensures that the dataset is accurate, consistent, and ready for further steps like EDA and visualization.
 
-🔗 Author
-Devi Sri
+## 🔗 Author
+Devi Sri Sarika
 
 *ApexPlanet Software Pvt. Ltd. | www.apexplanet.in*
