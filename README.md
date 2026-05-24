@@ -1,122 +1,88 @@
-# Task 1 — Data Immersion & Wrangling
-### ApexPlanet Software Pvt. Ltd. | Data Analytics Internship (60 Days)
+🧹 Task 1: Data Immersion & Wrangling - Sales Dataset
+📌 Objective
+The objective of this project is to understand, clean, and prepare a real-world sales dataset for analysis. Data wrangling is an essential first step in any data analytics workflow.
 
----
+📊 Dataset
+This project uses a Sales Transactions Dataset, which contains business-related data such as:
 
-## Overview
+Customer information (Name, Gender, Date of Birth, Age)
+Product details (Product, Category)
+Sales and revenue data (Unit Price, Quantity, Discount, Net Revenue)
+Geographic data (Region)
+Transaction details (Date, Payment Method, Customer Rating)
 
-This repository contains all deliverables for **Task 1** of the ApexPlanet Data Analytics Internship. The objective is to acquire a real-world dataset, profile it for quality issues, clean it systematically, perform feature engineering, and produce an analysis-ready output.
 
-**Timeline:** 10 Days  
-**Dataset:** Indian E-Commerce Orders — 2023 to 2024  
+🔍 Steps Performed
+1. Data Understanding
 
----
+Loaded dataset using Python
+Explored structure and column details
+Analyzed dataset using .head(), .info(), .describe()
 
-## Repository Structure
+2. Data Quality Assessment
 
-```
-task1-data-immersion/
+Checked for missing values (Gender 6%, Region 6%, Quantity 3.7%, Unit Price 4.5%)
+Identified and counted duplicate records (8 duplicates found)
+Detected inconsistent formatting in text and date columns
+
+3. Data Cleaning
+
+Removed 8 duplicate rows
+Standardized inconsistent text values (M/F → Male/Female, mixed casing in Category, Region)
+Filled missing values with median or default values
+Parsed multiple date formats into a single standard format
+
+4. Feature Engineering
+
+Created new columns:
+
+Customer_Age = Derived from Date of Birth
+Age_Group = Binned age categories (18–25, 26–35, 36–45, 46–60, 60+)
+Gross_Revenue = Quantity × Unit Price
+Discount_Amount = Gross Revenue × Discount Percentage
+Net_Revenue = Gross Revenue − Discount Amount
+Transaction_Year, Month, Quarter, DayOfWeek = Extracted from Transaction Date
+Is_High_Value = True if Net Revenue > 75th percentile
+
+
+
+
+🛠️ Tools & Technologies
+
+Python
+Pandas
+NumPy
+
+
+📁 Project Structure
+Task1-DataWrangling/
 │
 ├── data/
-│   └── ecommerce_orders.csv          ← Raw dataset (5,080 rows × 22 cols)
-│
-├── outputs/
-│   ├── cleaned_ecommerce_orders.csv  ← Final cleaned dataset (5,000 rows × 30 cols)
-│   └── cleaning_report.txt           ← Detailed log of every cleaning step
+│   └── raw_sales_data.csv
 │
 ├── scripts/
-│   └── data_cleaning.py              ← Main Python/Pandas cleaning script
+│   ├── generate_dataset.py
+│   └── data_cleaning.py
 │
-├── data_dictionary.md                ← Column definitions, types & business relevance
-└── README.md                         ← This file
-```
+├── output/
+│   ├── cleaned_sales_data.csv
+│   └── summary_statistics.csv
+│
+├── data_dictionary.md
+├── task1.py
+└── README.md
 
----
+📈 Output
 
-## Dataset Description
+Cleaned dataset with 507 rows × 24 columns ready for analysis
+Summary statistics of key numerical columns
+Organized project structure for reproducibility
 
-| Property | Value |
-|----------|-------|
-| Domain | Indian B2C E-Commerce |
-| Time Period | Jan 2023 – Dec 2024 |
-| Raw Rows | 5,080 |
-| Raw Columns | 22 |
-| Cleaned Rows | 5,000 |
-| Cleaned Columns | 30 (8 engineered) |
 
-### Key Columns
-- **Transactional:** `order_id`, `order_date`, `delivery_date`, `order_status`
-- **Product:** `category`, `sub_category`, `product_name`, `unit_price`, `quantity`, `discount`, `revenue`
-- **Customer:** `customer_id`, `customer_age`, `customer_gender`, `customer_rating`
-- **Geographic:** `city`, `state`
-- **Marketing:** `acquisition_channel`, `payment_method`, `is_first_order`
+🚀 Conclusion
+This project demonstrates the importance of data preprocessing and cleaning before performing any analysis. It ensures that the dataset is accurate, consistent, and ready for further steps like EDA and visualization.
 
----
-
-## Data Quality Issues Found
-
-| Issue | Count | Action Taken |
-|-------|-------|-------------|
-| Duplicate rows | 80 | Removed |
-| Inconsistent date formats | ~857 rows | Standardised to YYYY-MM-DD |
-| Missing customer ages | 204 | Imputed with category-group median |
-| Missing ratings | 153 | Imputed with global median (4.0) |
-| Non-standard gender labels | ~278 | Mapped to Male / Female / Other |
-| Negative discounts | 20 | Clamped to 0.0 |
-| Zero-revenue rows | 15 | Recalculated from formula |
-| Extreme price outliers | 30 | Flagged (`is_price_outlier`) — kept |
-
----
-
-## How to Run
-
-### Prerequisites
-```bash
-pip install pandas numpy
-```
-
-### Execute Cleaning Script
-```bash
-cd scripts/
-python3 data_cleaning.py
-```
-Output files are written to `outputs/`.
-
----
-
-## Key Engineered Features
-
-| Feature | Description |
-|---------|-------------|
-| `age_group` | Customer age bucketed: 18-25, 26-35, 36-45, 46-55, 56+ |
-| `days_to_delivery` | Calendar days from order to delivery |
-| `order_year / month / quarter` | Date parts for time-series analysis |
-| `revenue_band` | Low / Medium / High / Premium basket value |
-| `is_cancelled` | Boolean flag for cancelled orders |
-| `is_price_outlier` | Flags extreme unit prices (> 99th percentile) |
-
----
-
-## Skills Demonstrated
-
-- Pandas data loading and profiling
-- Multi-format date parsing
-- Categorical value standardisation
-- Outlier detection and treatment
-- Missing value imputation (group-based and global)
-- Feature engineering (binning, date parts, flags)
-- Reproducible, documented Python scripting
-
----
-
-## Next Steps (Task 2 Preview)
-
-With the cleaned dataset, Task 2 will focus on:
-- Descriptive statistics and univariate distributions
-- SQL-style business questions using Pandas
-- Multivariate correlation analysis
-- Static KPI dashboard mock-up
-
----
+🔗 Author
+Devi Sri
 
 *ApexPlanet Software Pvt. Ltd. | www.apexplanet.in*
